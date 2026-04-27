@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYSTEM CORRUPTED</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<canvas id="canvas"></canvas>
+<div class="scanlines"></div>
+
+<!-- LOGO BG -->
+<div id="logo-bg" class="corrupted">
+  <img id="logo-img" src="corrompido.png" alt="logo">
+</div>
+
+<div id="app">
+
+  <!-- CORRUPTED STATE -->
+  <div id="corrupted-state">
+    <div class="glitch" data-text="&#9888; SYSTEM FAILURE &#9888;">&#9888; SYSTEM FAILURE &#9888;</div>
+    <div class="status-badge">STATUS: CORRUPTED</div>
+    <div id="terminal-log"><span class="cursor"></span></div>
+    <div class="status-grid">
+      <div class="status-item" id="s-com"><div class="status-dot"></div><span class="status-label">Comunicação</span><span class="status-value">OFFLINE</span></div>
+      <div class="status-item" id="s-log"><div class="status-dot"></div><span class="status-label">Lógica</span><span class="status-value">FALHA</span></div>
+      <div class="status-item" id="s-dat"><div class="status-dot"></div><span class="status-label">Dados</span><span class="status-value">CORROMPIDO</span></div>
+    </div>
+    <div id="input-section">
+      <div class="input-label">// INSIRA A CHAVE DE RESTAURAÇÃO</div>
+      <input type="password" id="password-input" placeholder="INSERT RESTORE KEY" autocomplete="off" spellcheck="false">
+      <button id="restore-btn">[ RESTORE SYSTEM ]</button>
+      <div id="error-msg">ACCESS DENIED — INVALID KEY</div>
+    </div>
+  </div>
+
+  <!-- PROGRESS STATE -->
+  <div id="progress-section">
+    <div id="restore-terminal">
+      <div class="panel-label">// RESTORE LOG</div>
+      <span id="restore-log-text"></span><span class="cursor"></span>
+    </div>
+    <div class="progress-label"><span>// RESTORING SYSTEM...</span><span id="progress-pct">0%</span></div>
+    <div class="progress-bar-wrap"><div id="progress-fill"></div></div>
+    <div class="status-grid" style="margin-bottom:0">
+      <div class="status-item" id="p-com"><div class="status-dot"></div><span class="status-label">Comunicação</span><span class="status-value">OFFLINE</span></div>
+      <div class="status-item" id="p-log"><div class="status-dot"></div><span class="status-label">Lógica</span><span class="status-value">FALHA</span></div>
+      <div class="status-item" id="p-dat"><div class="status-dot"></div><span class="status-label">Dados</span><span class="status-value">CORROMPIDO</span></div>
+    </div>
+  </div>
+
+  <!-- FINAL SCREEN -->
+  <div id="final-screen">
+    <div class="system-ok">&#10003; SYSTEM RESTORED SUCCESSFULLY</div>
+    <div id="narrative"><span class="cursor"></span></div>
+    <div class="team-section">
+      <div class="input-label" style="align-self:center;">// REGISTRAR EQUIPE</div>
+      <input type="text" id="team-input" placeholder="Nome da equipe..." autocomplete="off" spellcheck="false">
+      <button id="finalize-btn">[ FINALIZAR MISSÃO ]</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- CINEMATIC -->
+<div id="cinematic">
+  <div class="cin-line green" id="c1">&gt;&gt; SYSTEM ONLINE</div>
+  <div class="cin-line blue"  id="c2">&gt;&gt; ACCESS GRANTED</div>
+  <div class="cin-line white" id="c3">&gt;&gt; WELCOME,</div>
+  <div id="welcome-team">—</div>
+  <div class="easter-egg" id="easter-egg" style="display:none">&#9888; NEW SIGNAL DETECTED...</div>
+</div>
+
+<!-- SIGNAL EASTER EGG -->
+<div id="signal-alert">&#9888; NEW SIGNAL DETECTED...</div>
+
+<!-- SECRET OVERLAY -->
+<div id="secret-overlay">
+
+  <!-- Screen 1: ID -->
+  <div id="screen-id" class="active">
+    <div class="secret-title" id="secret-typing"></div>
+    <div class="secret-label">Selecione seu nível:</div>
+    <div class="level-btns">
+      <button class="level-btn" id="btn-8" onclick="selectLevel(8)">[ 8&#186; ANO ]</button>
+      <button class="level-btn" id="btn-9" onclick="selectLevel(9)">[ 9&#186; ANO ]</button>
+    </div>
+  </div>
+
+  <!-- Screen 8 -->
+  <div id="screen-8">
+    <div class="module-title" id="title-8"></div>
+    <div class="module-content">
+      <div class="module-placeholder">Modulo 1: Lightbot é um jogo educativo que introduz conceitos básicos de programação. Neste módulo, você irá aprender a programar um robô para acender luzes por meio de comandos sequenciais, favorecendo a compreensão de lógica e organização de etapas<br><br>Modulo 2: O CodeCombat é um jogo educativo que ensina programação de forma interativa, utilizando uma abordagem baseada em desafios e aventuras. Neste módulo, você irá aprender a escrever códigos para controlar personagens e avançar nas fases, compreendendo conceitos fundamentais de programação, como comandos, lógica e estruturas básicas<br><br>Modulo 3: O SQL Murder Mystery é uma atividade interativa que simula a investigação de um crime por meio de consultas em banco de dados. Neste módulo, você irá analisar informações, cruzar dados e utilizar comandos em SQL para descobrir pistas e identificar o culpado.</div>
+    </div>
+    <button class="back-btn" onclick="backToId()">[ VOLTAR AO SISTEMA ]</button>
+  </div>
+
+  <!-- Screen 9 -->
+  <div id="screen-9">
+    <div class="module-title" id="title-9"></div>
+    <div class="module-content1">
+      <div class="module-placeholder1">[ Conteúdo do 9&#186; Ano será exibido aqui ]<br><br>Este módulo está pronto para receber<br>material pedagógico adicional.</div>
+    </div>
+    <button class="back-btn" onclick="backToId()">[ VOLTAR AO SISTEMA ]</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
